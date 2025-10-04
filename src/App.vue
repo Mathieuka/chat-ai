@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import OnlineUserList from '@/components/OnlineUsersList.vue'
-import { ref } from 'vue'
+import ChatView from '@/components/ChatView.vue'
 
-const users = ref([
+const users = [
   {
     id: 1,
     name: 'John Doe',
@@ -18,13 +18,40 @@ const users = ref([
     name: 'Alice Johnson',
     isOnline: false,
   },
-])
+]
+
+const messages = [
+  {
+    content: 'Hello, how can I help you?',
+    from: 'Neo',
+    timestamp: new Date(),
+    id: 1,
+  },
+  {
+    content: 'I have a question about my order.',
+    from: 'Matt',
+    timestamp: new Date(),
+    id: 2,
+  },
+  {
+    content: 'Sure, what is your order number?',
+    from: 'Neo',
+    timestamp: new Date(),
+    id: 3,
+  },
+  {
+    content: "It's 12345.",
+    from: 'Matt',
+    timestamp: new Date(),
+    id: 4,
+  },
+]
 </script>
 
 <template>
   <div class="main-container">
     <OnlineUserList :users="users" />
-    <div class="chat">Chat</div>
+    <ChatView :messages="messages" />
     <div class="notification">Notification</div>
   </div>
 </template>
