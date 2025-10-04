@@ -17,9 +17,10 @@ defineProps<{
         <p>{{ message.timestamp.getTime() }}</p>
       </li>
     </ul>
-    <div class="message-input-container">
-      <input class="message-input" type="text" />
-      <button class="message-button">Send</button>
+
+    <div class="input-container">
+      <input class="input" type="text" />
+      <button class="button">Send</button>
     </div>
   </div>
 </template>
@@ -28,6 +29,7 @@ defineProps<{
 .chat-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   height: 100vh;
 }
 
@@ -48,20 +50,20 @@ defineProps<{
   padding: 0.5rem;
 }
 
-.message-input-container {
+.input-container {
   display: flex;
   align-items: center;
   padding: 0.5rem;
 }
 
-.message-input {
+.input {
   width: 80%;
   height: 2rem;
   border-top: 1px solid black;
   background: white;
 }
 
-.message-button {
+.button {
   height: 2.3rem;
   width: 20%;
 }
