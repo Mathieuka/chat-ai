@@ -1,23 +1,33 @@
 <script setup lang="ts">
+import { useAuth } from '@/composable/auth.ts'
+
+const newMessage = defineModel()
+const { user } = useAuth()
+
 defineProps<{
   messages: {
     content: string
     from: string
     to: string
     timestamp: Date
-    id: number
+    id: string
   }[]
 }>()
-
-const newMessage = defineModel()
 </script>
 
 <template>
   <div class="chat-container">
     <ul class="messages">
       <li class="message" v-for="message in messages" :key="message.id">
-        <p>{{ message.content }}</p>
-        <p>{{ message.timestamp.getTime() }}</p>
+        <p
+          :class="{
+            'message-from-current-user': message.to === user.id,
+            'message-from-current-contact': message.to != user.id,
+          }"
+        >
+          {{ message.content }}
+        </p>
+        <p class="">{{ message.timestamp.getTime() }}</p>
       </li>
     </ul>
     <div class="input-container">
@@ -68,5 +78,13 @@ const newMessage = defineModel()
 .button {
   height: 2.3rem;
   width: 20%;
+}
+
+.message-from-current-user {
+  color: blue;
+}
+
+.message-from-current-contact {
+  color: black;
 }
 </style>

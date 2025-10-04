@@ -2,7 +2,7 @@
 import { defineProps } from 'vue'
 
 defineProps<{
-  users: {
+  contacts: {
     id: number
     name: string
     isOnline: boolean
@@ -14,9 +14,9 @@ defineProps<{
   <div class="users">
     <p>Online Users</p>
     <ul class="users-list">
-      <li class="user" v-for="user in users" :key="user.id">
-        <div class="dot"></div>
-        <div>{{ user.name }}</div>
+      <li class="user" v-for="contact in contacts" :key="contact.id">
+        <div class="dot" :class="{ online: contact.isOnline, offline: !contact.isOnline }"></div>
+        <div>{{ contact.name }}</div>
       </li>
     </ul>
   </div>
@@ -55,7 +55,14 @@ defineProps<{
 .dot {
   height: 0.5rem;
   width: 0.5rem;
-  background-color: #4caf50;
   border-radius: 50%;
+}
+
+.dot.online {
+  background-color: #4caf50;
+}
+
+.dot.offline {
+  background-color: #f44336;
 }
 </style>

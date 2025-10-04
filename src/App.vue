@@ -10,19 +10,19 @@ watchEffect(() => {
   console.log(newMessage.value)
 })
 
-const users = [
+const contacts = [
   {
-    id: 1,
+    id: '2',
     name: 'John Doe',
-    isOnline: true,
+    isOnline: false,
   },
   {
-    id: 2,
+    id: '3',
     name: 'Jane Smith',
-    isOnline: true,
+    isOnline: false,
   },
   {
-    id: 3,
+    id: '4',
     name: 'Alice Johnson',
     isOnline: false,
   },
@@ -31,29 +31,29 @@ const users = [
 const messages = [
   {
     content: 'Hello, how can I help you?',
-    from: 'Neo',
-    to: 'Matt',
+    from: '2',
+    to: '1',
     timestamp: new Date(),
     id: 1,
   },
   {
     content: 'I have a question about my order.',
-    from: 'Matt',
-    to: 'Neo',
+    from: '1',
+    to: '2',
     timestamp: new Date(),
     id: 2,
   },
   {
     content: 'Sure, what is your order number?',
-    from: 'Neo',
-    to: 'Matt',
+    from: '2',
+    to: '1',
     timestamp: new Date(),
     id: 3,
   },
   {
     content: "It's 12345.",
-    from: 'Matt',
-    to: 'Neo',
+    from: '1',
+    to: '2',
     timestamp: new Date(),
     id: 4,
   },
@@ -62,7 +62,7 @@ const messages = [
 
 <template>
   <div class="main-container">
-    <OnlineUserList :users="users" />
+    <OnlineUserList :contacts="contacts" />
     <ChatView :messages="messages" v-model="newMessage" />
     <NotificationView />
   </div>
