@@ -1,9 +1,29 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import OnlineUserList from '@/components/OnlineUsersList.vue'
+import { ref } from 'vue'
+
+const users = ref([
+  {
+    id: 1,
+    name: 'John Doe',
+    isOnline: true,
+  },
+  {
+    id: 2,
+    name: 'Jane Smith',
+    isOnline: true,
+  },
+  {
+    id: 3,
+    name: 'Alice Johnson',
+    isOnline: false,
+  },
+])
+</script>
 
 <template>
-  z
   <div class="main-container">
-    <div class="users">Users</div>
+    <OnlineUserList :users="users" />
     <div class="chat">Chat</div>
     <div class="notification">Notification</div>
   </div>
@@ -21,11 +41,6 @@
   padding: 1rem;
   margin: auto;
   border-radius: 0.7rem;
-}
-
-.users {
-  border: 0.2rem solid black;
-  border-radius: 2rem;
 }
 
 .chat {
