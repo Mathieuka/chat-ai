@@ -3,10 +3,13 @@ defineProps<{
   messages: {
     content: string
     from: string
+    to: string
     timestamp: Date
     id: number
   }[]
 }>()
+
+const newMessage = defineModel()
 </script>
 
 <template>
@@ -17,9 +20,8 @@ defineProps<{
         <p>{{ message.timestamp.getTime() }}</p>
       </li>
     </ul>
-
     <div class="input-container">
-      <input class="input" type="text" />
+      <input class="input" type="text" v-model="newMessage" />
       <button class="button">Send</button>
     </div>
   </div>

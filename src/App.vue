@@ -2,6 +2,13 @@
 import OnlineUserList from '@/components/OnlineUsersList.vue'
 import ChatView from '@/components/ChatView.vue'
 import NotificationView from '@/components/NotificationView.vue'
+import { ref, watchEffect } from 'vue'
+
+const newMessage = ref('')
+
+watchEffect(() => {
+  console.log(newMessage.value)
+})
 
 const users = [
   {
@@ -25,24 +32,28 @@ const messages = [
   {
     content: 'Hello, how can I help you?',
     from: 'Neo',
+    to: 'Matt',
     timestamp: new Date(),
     id: 1,
   },
   {
     content: 'I have a question about my order.',
     from: 'Matt',
+    to: 'Neo',
     timestamp: new Date(),
     id: 2,
   },
   {
     content: 'Sure, what is your order number?',
     from: 'Neo',
+    to: 'Matt',
     timestamp: new Date(),
     id: 3,
   },
   {
     content: "It's 12345.",
     from: 'Matt',
+    to: 'Neo',
     timestamp: new Date(),
     id: 4,
   },
@@ -52,7 +63,7 @@ const messages = [
 <template>
   <div class="main-container">
     <OnlineUserList :users="users" />
-    <ChatView :messages="messages" />
+    <ChatView :messages="messages" v-model="newMessage" />
     <NotificationView />
   </div>
 </template>
