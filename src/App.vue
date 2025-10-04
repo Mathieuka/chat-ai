@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import OnlineUserList from '@/components/OnlineUsersList.vue'
 import ChatView from '@/components/ChatView.vue'
+import NotificationView from '@/components/NotificationView.vue'
 
 const users = [
   {
@@ -52,7 +53,7 @@ const messages = [
   <div class="main-container">
     <OnlineUserList :users="users" />
     <ChatView :messages="messages" />
-    <div class="notification">Notification</div>
+    <NotificationView />
   </div>
 </template>
 
@@ -68,15 +69,5 @@ const messages = [
   padding: 1rem;
   margin: auto;
   border-radius: 0.7rem;
-}
-
-.chat {
-  border: 0.1rem solid black;
-  border-radius: 2rem;
-}
-
-.notification {
-  border: 0.2rem solid black;
-  border-radius: 2rem;
 }
 </style>
